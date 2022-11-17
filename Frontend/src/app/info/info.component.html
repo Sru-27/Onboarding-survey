@@ -1,0 +1,181 @@
+<br />
+
+<div class="container">
+  <br />
+
+  <ul>
+    <li>
+      <h1 id="info">BASIC INFO</h1>
+    </li>
+    <li>
+      <h1 id="mark">MARKETING</h1>
+    </li>
+    <li>
+      <h1 id="social">SOCIAL MEDIA</h1>
+    </li>
+  </ul>
+
+  <mat-progress-bar mode="determinate" value="33"></mat-progress-bar>
+
+  <br />
+
+  <div class="register-form">
+    <form [formGroup]="form">
+      <div class="container">
+        <div class="row g-3">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>*First Name</label>
+              <input
+                type="text"
+                id = "Name"
+                formControlName="firstname"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+              />
+              <div
+                *ngIf="submitted && f.firstname.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.firstname.errors.required">
+                  Firstname is required
+                </div>
+                <div *ngIf="f.firstname.errors.minlength">
+                  Username must be at least 6 characters
+                </div>
+                <div *ngIf="f.firstname.errors.maxlength">
+                  Username must not exceed 20 characters
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="Middle">Middle Name</label>
+              <textarea
+                id="Middle"
+                formControlName="Middle"
+                cols="1"
+                rows="1"
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="Last">Last Name</label>
+              <textarea
+                id="Last"
+                formControlName="Last"
+                cols="1"
+                rows="1"
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>*Birthday</label>
+              <div class="md-form md-outline input-with-post-icon datepicker">
+                <input
+                  type="date"
+                  id="day"
+                  formControlName="Birthday"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.Birthday.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.Birthday.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.Birthday.errors.required">
+                    Birthday is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>*Email</label>
+              <input
+                type="text"
+                id = "mail"
+                formControlName="email"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+              />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email is invalid</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>*Communication Email</label>
+              <input
+                type="text"
+                id="cemail"
+                formControlName="cemail"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.cemail.errors }"
+              />
+              <div
+                *ngIf="submitted && f.cemail.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.cemail.errors.required">
+                  Communication Email is required
+                </div>
+                <div *ngIf="f.cemail.errors.cemail">
+                  Communication Email is invalid
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+          <label for="Interests">Interests</label>
+          <textarea
+            id="interests"
+            formControlName="interests"
+            cols="10"
+            rows="3"
+            class="form-control"
+          ></textarea>
+        </div>
+
+        <br />
+        <button
+          type="click"
+          class="btn btn-outline-primary float-left"
+          (click)="openDialog('3000ms', '1500ms')"
+        >
+          Cancel
+        </button>
+        <div class="actions">
+        <button
+          id="#onadd"
+          type="button"
+          class="btn btn-primary float-right"
+          [disabled]="!form.valid"
+          (click)="onaddDetails()"
+        >
+          Next
+        </button>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>

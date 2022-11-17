@@ -1,0 +1,27 @@
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+  text-align: center;
+  text-indent: 70px;
+}
+
+h1 {
+  padding-left: 100px;
+  font-size: xx-large;
+}
+
+#info {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#mark {
+  padding-right: 10px;
+}
+
+mat-progress-bar {
+  height: 10px;
+}

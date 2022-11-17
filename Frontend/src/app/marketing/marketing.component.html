@@ -1,0 +1,125 @@
+<br />
+
+<div class="container">
+  <br />
+
+  <ul>
+    <li>
+      <h1 id="info">BASIC INFO</h1>
+    </li>
+    <li>
+      <h1 id="mark">MARKETING</h1>
+    </li>
+    <li>
+      <h1 id="social">SOCIAL MEDIA</h1>
+    </li>
+  </ul>
+
+  <mat-progress-bar mode="determinate" value="67"></mat-progress-bar>
+
+  <br />
+
+  <h3>Allocate percentage in 3 risk categories based on your interests</h3>
+
+  <div class="register-form">
+    <form [formGroup]="percentage">
+      <div class="row g-3">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>*Moderate</label>
+            <input
+              (input)="myValidator1()"
+              #mod
+              type="number"
+              formControlName="amount"
+              id="mod"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"
+            />
+            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+              <div *ngIf="f.amount.errors.required">Moderate is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>*Growth</label>
+            <input
+              (input)="myValidator1()"
+              type="number"
+              id="gro"
+              formControlName="grow"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.grow.errors }"
+            />
+            <div *ngIf="submitted && f.grow.errors" class="invalid-feedback">
+              <div *ngIf="f.grow.errors.required">Growth is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>*Aggressive growth</label>
+            <input
+              (input)="myValidator1()"
+              type="number"
+              formControlName="agg"
+              id="agg"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.agg.errors }"
+            />
+            <div *ngIf="submitted && f.agg.errors" class="invalid-feedback">
+              <div *ngIf="f.agg.errors.required">
+                Aggressive growth is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="button">
+        <button
+          type="submit"
+          class="btn btn-outline-primary float-left"
+          (click)="openDialog('3000ms', '1500ms')"
+        >
+          Cancel
+        </button>
+        <div class="actions">
+        <button
+          type="button"
+          class="btn btn-primary float-right"
+          [disabled]="!validform"
+          (click)="oncomplete()"
+        >
+          Next
+        </button>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary float-right mr-4"
+          routerLink="/info"
+        >
+          Prev
+        </button>
+      </div>
+
+      <br /><br />
+    </form>
+  </div>
+
+  <div #donut *ngIf="validform">
+    <div class="donut">
+      <div style="display: block">
+        <canvas
+          baseChart
+          [data]="demodoughnutChartData"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</div>

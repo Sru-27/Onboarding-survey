@@ -1,0 +1,154 @@
+<br />
+
+<div class="container">
+  <br />
+
+  <ul>
+    <li>
+      <h1 id="info">BASIC INFO</h1>
+    </li>
+    <li>
+      <h1 id="mark">MARKETING</h1>
+    </li>
+    <li>
+      <h1 id="social">SOCIAL MEDIA</h1>
+    </li>
+  </ul>
+
+  <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+
+  <br />
+
+  <div class="register-form">
+    <form [formGroup]="finalForm">
+      <div class="row g-3">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="age">*What is age group ideal target clients?</label>
+            <select
+              formControlName="age"
+              id="age"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.age.errors }"
+              required
+            >
+              <option value="10-20">10-20</option>
+              <option value="20-30">20-30</option>
+              <option value="30-40">30-40</option>
+              <option value="40-50">40-50</option>
+            </select>
+            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+              <div *ngIf="f.age.errors.required">Age is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="website">Link of your website</label>
+            <textarea
+              id="website"
+              formControlName="website"
+              cols="1"
+              rows="1"
+              class="form-control"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="marketing"
+              >Which marketing tactics currently use?</label
+            >
+            <select formControlName="mart" id = "mart" class="form-control">
+              <option value="Emarketing">Emarketing</option>
+              <option value="Tele marketing">Tele marketing</option>
+              <option value="B2b marketing">B2b marketing</option>
+              <option value="C2c marketing">C2c marketing</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="url">*Link of Facebook page</label>
+            <input
+              type="text"
+              formControlName="url"
+              id="url"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.url.errors }"
+              required
+            />
+            <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+              <div *ngIf="f.url.errors.required">URL is required</div>
+              <div *ngIf="f.url.errors.invalidURL">URL is not valid</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <label>*C</label>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="c"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.c.errors }"
+              required
+            />
+            <div *ngIf="submitted && f.c.errors" class="invalid-feedback">
+              <div *ngIf="f.c.errors.required">C is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="link">*Link of Linkedin page</label>
+            <input
+              type="text"
+              formControlName="link"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.link.errors }"
+              required
+            />
+            <div *ngIf="submitted && f.link.errors" class="invalid-feedback">
+              <div *ngIf="f.link.errors.required">URL is required</div>
+              <div *ngIf="f.link.errors.invalidURL">URL is not valid</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button
+          type="click"
+          class="btn btn-outline-primary float-left mt-5"
+          (click)="openDialog('3000ms', '1500ms')"
+        >
+          Cancel
+        </button>
+         
+        <button
+          type="button"
+          class="btn btn-success float-right mt-5"
+          [disabled]="!finalForm.valid"
+          (click)="oncancel()"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary float-right mr-4 mt-5"
+          routerLink="/marketing"
+        >
+          Prev
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

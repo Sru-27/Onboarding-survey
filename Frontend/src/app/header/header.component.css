@@ -1,0 +1,14 @@
+nav {
+  box-sizing: border-box;
+  width: 100%;
+  border: solid #8a8c91 3px;
+  box-shadow: 0 2px 4px #8a8c91;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.header-name {
+  padding-right: 80%;
+}
